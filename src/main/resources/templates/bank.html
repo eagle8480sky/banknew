@@ -1,0 +1,36 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: htmlhead" th:with="title='Hello'"></head>
+
+<body bgcolor="pink">
+	<div class="container">
+		<div class="starter-template">
+			<h2 align="center">个人账户收支情况</h2>
+			<h3 align="center">卡号：11111111111</h3>
+			<table class="table table-hover" align="center" border="1" bordercolor="black" width="600">
+				<tr>
+					<th align="left">时间</th>
+					<th align="left">总钱数(元)</th>
+					<th align="left">收入(元)</th>
+					<th align="left">支出(元)</th>
+					<th align="left">余额(元)</th>
+				</tr>
+				<tr th:each="bank : ${banks}">
+					<td th:text="${bank.oderTime}">--</td>
+					<td th:text="${bank.totalMoney}">--</td>
+					<td th:text="${bank.income}">--</td>
+					<td th:text="${bank.expenditure}">--</td>
+					<td th:text="${bank.balance}">--</td>
+					<!-- <td>
+						<div th:each="verbs : ${role.rules.verbs}" class="btn-group" role="group" aria-label="...">
+							<button type="button" class="btn btn-default" th:text="${verbs.current}">Left</button>	
+						</div>
+					</td> -->
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<div th:include="layout :: footer" id="footer">(footer)</div>
+</body>
+</html>
+
