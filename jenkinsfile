@@ -1,12 +1,5 @@
 pipeline {      
     agent any
-    //agent {label 'Docker-slave-mybmwapp'}
-    options {
-        timeout(time:3900, unit: 'SECONDS') /**设置Pipeline运行的超时时间*/
-        buildDiscarder(logRotator(numToKeepStr: '7')) /**保持构建的最大个数*/
-        timestamps() /**预定义由Pipeline生成的所有控制台输出时间。例如：options { timestamps() }*/
-    }
-    
     parameters {
         choice(
             name: 'target_branch',
@@ -48,16 +41,6 @@ pipeline {
     
 	
     stages {
-       stage('Checkout git repo') {
-           steps {
-                    git(
-                        url: params.target_repo_url,
-                        branch: params.target_branch,
-                        credentialsId: env.git_auth_id,
-                        changelog: true
-                    )
-                }
-       }
        stage('Maven Build') {
          
             steps {
