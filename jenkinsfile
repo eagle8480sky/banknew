@@ -1,9 +1,5 @@
 pipeline {      
     agent {	
-      kubernetes { 
-        cloud 'kubernetes' 
-        label 'java18'
-        defaultContainer 'jenkins-agent'
      }
     }
     //agent {label 'Docker-slave-mybmwapp'}
