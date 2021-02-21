@@ -46,7 +46,8 @@ pipeline {
             steps {
                 sh """
                 echo ${GIT_TAG}
-                mvn clean install -Dmaven.test.skip=true
+		
+                /opt/maven/bin/mvn clean install -Dmaven.test.skip=true
                 """
             }
 
