@@ -86,12 +86,13 @@ pipeline {
                   //  echo $Password | docker login --username $UserName --password-stdin ${REGISTRY_HOST} 
                 //'''
 		script {
+			sh '''
 	                docker build -t ${REGISTRY_HOST}/${target_branch}/\${modulename}:${GIT_TAG} .
 	                docker tag ${REGISTRY_HOST}/${target_branch}/\${modulename}:${GIT_TAG} ${REGISTRY_HOST}/${target_branch}/\${modulename}:${DOCKER_TAG}
 	                docker push ${REGISTRY_HOST}/${target_branch}/\${modulename}:${DOCKER_TAG}
 	                docker push ${REGISTRY_HOST}/${target_branch}/\${modulename}:${GIT_TAG}
 	                //docker rmi ${REGISTRY_HOST}/${target_branch}/\${modulename}:${GIT_TAG}
-	                """
+	                '''
                   echo "======================================"
 		               }
 	     		}	                    
