@@ -46,7 +46,7 @@ pipeline {
     }
 
     environment {
-//        git_auth_id = 'Bitbucket_PROD' //需要建立credentialsId
+        git_auth_id = 'Bitbucket_PROD' //需要建立credentialsId
         DOCKER_TAG = 'latest'
       }
     
