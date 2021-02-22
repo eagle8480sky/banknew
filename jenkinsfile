@@ -65,7 +65,6 @@ pipeline {
 	                sudo docker tag ${REGISTRY_HOST}/${target_branch}/\${modulename}:${GIT_TAG} ${REGISTRY_HOST}/${target_branch}/\${modulename}:${DOCKER_TAG}
 	                sudo docker push ${REGISTRY_HOST}/${target_branch}/\${modulename}:${DOCKER_TAG}
 	                sudo docker push ${REGISTRY_HOST}/${target_branch}/\${modulename}:${GIT_TAG}
-	                //docker rmi ${REGISTRY_HOST}/${target_branch}/\${modulename}:${GIT_TAG}
 	                '''
                   echo "======================================"
 		               }	                    
