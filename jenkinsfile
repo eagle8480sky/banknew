@@ -53,7 +53,7 @@ pipeline {
 
         }
         
-	   stage('Docker Build') {
+	stage('Docker Build') {
             steps {
                //withCredentials([usernamePassword(credentialsId: '*******', passwordVariable: '*****', usernameVariable: '*****')])
                 //sh '''
@@ -72,5 +72,16 @@ pipeline {
               
 			}
 		}
-	}
+
+	stage('Deploy') {
+
+        steps {
+          
+          withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: "test-k8s", namespace: "default", serverUrl: '') {
+              sh "kubectl set image deployment/test test=172.17.5.228:5000/test/test:latest"
+          }
+         
+        }
+      }
+    }
 }
