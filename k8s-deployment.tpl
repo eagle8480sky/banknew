@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: {APP_NAME}
-        image: {IMAGE_URL}:{IMAGE_TAG}
+        image: 172.17.5.228:5000/test/test:latest
         ports:
         - containerPort: 8813
