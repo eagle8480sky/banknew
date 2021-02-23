@@ -75,8 +75,25 @@ pipeline {
 	stage('Deploy') {
 
         steps {
-          
-          withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: "test-k8s", namespace: "default", serverUrl: '') {
+		withKubeCredentials(kubectlCredentials: [[caCertificate: '''-----BEGIN CERTIFICATE-----
+MIIDGjCCAgKgAwIBAgIBADANBgkqhkiG9w0BAQsFADA+MScwFAYDVQQKEw1hbGli
+YWJhIGNsb3VkMA8GA1UEChMIaGFuZ3pob3UxEzARBgNVBAMTCmt1YmVybmV0ZXMw
+HhcNMjEwMjIzMDI0OTUwWhcNMzEwMjIxMDI0OTUwWjA+MScwFAYDVQQKEw1hbGli
+YWJhIGNsb3VkMA8GA1UEChMIaGFuZ3pob3UxEzARBgNVBAMTCmt1YmVybmV0ZXMw
+ggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCwnVzcNdiNjdPu3hVjpN3K
+b51Kt6cHvWgyKqket59oeltITUTQk2BeXpXgKe+aCwz1e3JjpqUdUZplhxpc/LCE
+2NcKpQzMi4dztxsv5OB+EX0EJpayrsfDC0svh/4odEP3jnZtfcP6uOKqmrYWVzJ/
+4X3bWRvhErvajDV4yTlbrx5rY3Y2HTCwUSqemCZP+hz68hDOq3yJEfuSQkBARuQo
+iUD7E6mxx0uLha3ed1E20SirJbrGJAIs6NPnmWF8jVd0cz5O7Bania9Gl2OxAgSE
+SkdKks3iMoz1qIw8Lm4xAW81mLC8jv+xyFTAo/MBCiwqWCP4eoWTc6At6hXrqtsZ
+AgMBAAGjIzAhMA4GA1UdDwEB/wQEAwICpDAPBgNVHRMBAf8EBTADAQH/MA0GCSqG
+SIb3DQEBCwUAA4IBAQBORioN+dD7Sqo+lDggZuKZieJWXFIyaCL0bHD7RAU7HF5t
+oRtC34gxKe62P4XfisxJWMKpdazYTPcLzBSiUKY1RxH2T8HUaExAwPTKSfkho6Zf
+SK28733xUizpPNHbLm8qzUGTyeDdumNEbORLN4D9MZwGiUjQZmAPOefvwpeYXrUl
+VjqbWybCFOZGmUl+0va6ngeMlNTUFDc7wIryMd6g/cHR84tfXj23y1VWU1lE2mLu
+wlwmJXuxtP09pPZIKcdLozZAawl09sK622i2onTlPHWcUWJ3R4Flsnc3EviepgMd
+5mmS4cHdNCgf/YUHV0y2Xe8zZ3iPWZJbnVartGoh
+-----END CERTIFICATE-----''', clusterName: 'test-k8s', contextName: '', credentialsId: 'test-k8s-new', namespace: 'default', serverUrl: 'https://172.17.5.235:6443']]) 
               sh "kubectl set image deployment/test test=172.17.5.228:5000/test/test:latest"
           }
          
