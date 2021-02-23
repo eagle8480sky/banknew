@@ -76,7 +76,8 @@ pipeline {
 
         steps {
 	    withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: "test-k8s-config", namespace: "default", serverUrl: '') {
-              sh "kubectl set image deployment/test test=172.17.5.228:5000/test/test:latest"
+	    sh "sed -e 's#{APP_NAME}#student#g' k8s-deployment.tpl > k8s-deployment.yml"
+            sh "kubectl apply -f k8s-deployment.yml --namespace=default"
           }
           }
          

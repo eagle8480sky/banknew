@@ -75,8 +75,9 @@ pipeline {
 	stage('Deploy') {
 
         steps {
-		
+	    withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: "test-k8s-config", namespace: "default", serverUrl: '') {
               sh "kubectl set image deployment/test test=172.17.5.228:5000/test/test:latest"
+          }
           }
          
         }
