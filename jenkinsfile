@@ -2,9 +2,14 @@ pipeline {
     agent any
     parameters {
         choice(
-            name: 'target_branch',
-            choices: 'test',
-            description: 'test'
+            name: 'release_env',
+            choices: '',
+            description: ''
+            )
+        choice(
+            name: 'branch',
+            choices: '',
+            description: ''
             )
         choice(
             name: 'REGISTRY_HOST',
@@ -12,19 +17,8 @@ pipeline {
             description: 'registry host'
             )
          choice(
-            name: 'profiles',
-            choices: 'dev',
-            description: 'Dockerfile ARG profiles'
-            )
-            
-         choice(
-            name: 'ArtifactPath',
-            choices: 'target/*.jar',
-            description: 'ArtifactPath not used '
-            )
-         choice(
-            name: 'modulename',
-            choices: 'test',
+            name: 'app_name',
+            choices: '',
             description: ''
             )
          choice(
